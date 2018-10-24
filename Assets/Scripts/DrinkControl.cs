@@ -14,6 +14,10 @@ public class DrinkControl : MonoBehaviour {
     private float drunkLevel;
     private float otherLevel;
 
+    private float timer;
+    private bool hasTimerStarted;
+    private bool increaseAlpha;
+
     private void Start()
     {
         fd = alternateWorld.GetComponent<FadeWhitebox>();
@@ -24,16 +28,40 @@ public class DrinkControl : MonoBehaviour {
         drunkLevel = 1.0f;
         fd.alphaLevel = drunkLevel;
 
+        timer = 0.0f;
+        increaseAlpha = false;
+        hasTimerStarted = false;
+
     }
 
     private void Update()
     {
 
-        if (fd.alphaLevel <= 1.0f)
+        if (increaseAlpha == true)
         {
-            fd.alphaLevel += 0.002f;
+            if (fd.alphaLevel <= 1.0f)
+            {
+                fd.alphaLevel += 0.002f;
 
+            }
         }
+
+        if(hasTimerStarted == true)
+        {
+            timer += Time.deltaTime;
+            if((int) timer == 3)
+            {
+                increaseAlpha = true;
+                hasTimerStarted = false;
+            }
+        }
+
+        if(fd.alphaLevel == 1.0f)
+        {
+            increaseAlpha = false;
+        }
+
+        
     }
     // Use this for initialization
     private void OnTriggerEnter(Collider other)
@@ -46,6 +74,9 @@ public class DrinkControl : MonoBehaviour {
 
             fd.alphaLevel -= 0.3f;
             fd1.alphaLevel += 0.4f;
+
+            timer = 0.0f;
+            hasTimerStarted = true;
 
         }
 
