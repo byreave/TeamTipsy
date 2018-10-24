@@ -12,7 +12,7 @@ namespace HoloToolkit.Unity.InputModule.Examples.Grabbables
 
     public class GrabbableTrackFollow : BaseGrabbable
     {
-        [Range(1, 10)]
+        [Range(0.1f, 10.0f)]
         public float lagAmount = 5;
         public float rotationSpeed = 5;
         private Rigidbody rb;
