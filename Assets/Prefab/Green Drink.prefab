@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 54342018653945208}
   - component: {fileID: 114187671970773450}
   - component: {fileID: 114979555098356886}
+  - component: {fileID: 114108787870889008}
   m_Layer: 0
   m_Name: Green Drink
   m_TagString: Drink
@@ -205,6 +206,17 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
+--- !u!114 &114108787870889008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1799072736159576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a01eb15f25e5ff04d9e51caff4707d8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114187671970773450
 MonoBehaviour:
   m_ObjectHideFlags: 1
