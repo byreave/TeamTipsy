@@ -48,6 +48,8 @@ public class DrinkControl : MonoBehaviour {
 
         if(hasTimerStarted == true)
         {
+
+            Debug.Log(fd.alphaLevel);
             timer += Time.deltaTime;
             if((int) timer == 3)
             {
