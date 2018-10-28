@@ -215,7 +215,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1341106010567616}
   m_LocalRotation: {x: 0.001598259, y: 0.70710504, z: -0.70710504, w: -0.001598259}
-  m_LocalPosition: {x: 0.029, y: 1.926, z: -1.41}
+  m_LocalPosition: {x: 0.029, y: 1.793, z: -1.426}
   m_LocalScale: {x: 0.047761682, y: 0.047761653, z: 0.047761653}
   m_Children: []
   m_Father: {fileID: 4630523299786988}
@@ -228,7 +228,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1293834788831688}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.773, y: 0.532, z: -0.554}
+  m_LocalPosition: {x: 0.773, y: 0.532, z: -0.357}
   m_LocalScale: {x: 0.24907, y: 0.24907, z: 0.24907}
   m_Children:
   - {fileID: 4240812854531874}
@@ -4051,15 +4051,15 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     minKillSpeed: 0
-    maxKillSpeed: 2.5
-    radiusScale: 0.001
+    maxKillSpeed: 0
+    radiusScale: 0.03
     collidesWith:
       serializedVersion: 2
       m_Bits: 4294967295
     maxCollisionShapes: 20
     quality: 1
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
@@ -4070,11 +4070,11 @@ ParticleSystem:
     collisionShape3: {fileID: 0}
     collisionShape4: {fileID: 0}
     collisionShape5: {fileID: 0}
-    inside: 1
+    inside: 0
     outside: 0
-    enter: 0
+    enter: 1
     exit: 0
-    radiusScale: 1
+    radiusScale: 0.03
   SubModule:
     serializedVersion: 2
     enabled: 0
