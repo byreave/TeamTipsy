@@ -17,6 +17,7 @@ public class DrinkControl : MonoBehaviour {
     private float timer;
     private bool hasTimerStarted;
     private bool increaseAlpha;
+    
 
     private void Start()
     {
@@ -49,7 +50,7 @@ public class DrinkControl : MonoBehaviour {
         if(hasTimerStarted == true)
         {
 
-            Debug.Log(fd.alphaLevel);
+            //Debug.Log()
             timer += Time.deltaTime;
             if((int) timer == 3)
             {
@@ -82,5 +83,22 @@ public class DrinkControl : MonoBehaviour {
 
         }
 
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        //if drunk, the glass's water level should be reduced.
+        if (other.CompareTag("Glass"))
+        {
+            //currently don't rotate.
+            //if(other.gameObject.transform.rotation.x > 0.75f || other.gameObject.transform.rotation.x < -0.75f)
+            {
+                if(other.gameObject.GetComponent<GlassControl>().FillLevel > 0)
+                {
+                    other.gameObject.GetComponent<GlassControl>().FillLevel--;
+                    //to do: Increase the drunk level here.
+
+                }
+            }
+        }
     }
 }

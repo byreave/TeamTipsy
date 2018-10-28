@@ -7,6 +7,9 @@ TagManager:
   - Drink
   - Table
   - Floor
+  - Sugar
+  - Spoon
+  - Glass
   layers:
   - Default
   - TransparentFX

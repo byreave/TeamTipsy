@@ -114,7 +114,7 @@ MonoBehaviour:
   - {fileID: 1994246036185680, guid: d9171df2cb4072c41877c1f3d5d38a8f, type: 2}
   - {fileID: 1799072736159576, guid: 3652f2a887cb68c4db1932c416baf2f2, type: 2}
   - {fileID: 1120120187289992, guid: b4d5dafb6ef8024459b4fdebf376f7c9, type: 2}
-  GenerationTime: 3
+  GenerationTime: 10
 --- !u!114 &114302608906495722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -128,4 +128,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlatePrefab: {fileID: 1128203083543240, guid: 0feb26a1bc09c324aa2835b27bc5471e,
     type: 2}
-  GenerationTime: 3
+  GenerationTime: 10
