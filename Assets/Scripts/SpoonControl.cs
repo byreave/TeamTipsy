@@ -44,13 +44,22 @@ public class SpoonControl : MonoBehaviour {
     }
     private void OnParticleCollision(GameObject other)
     {
-        if(SugarCubeMelt1.activeSelf || SugarCubeMelt2.activeSelf || SugarCubeMelt3.activeSelf)
+        Debug.Log("asdfdsfsassss");
+        Debug.Log(other.name);
+
+        if (SugarCubeMelt1.activeSelf || SugarCubeMelt2.activeSelf || SugarCubeMelt3.activeSelf)
         {
             Debug.Log("!!!");
             DripCount++;
             Glass.GetComponent<GlassControl>().DripCount++;
         }
     }
+    private void OnParticleTrigger()
+    {
+        Debug.Log("asdfdsf");
+
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Sugar"))

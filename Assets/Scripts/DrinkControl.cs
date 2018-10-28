@@ -96,7 +96,6 @@ public class DrinkControl : MonoBehaviour {
                 {
                     other.gameObject.GetComponent<GlassControl>().FillLevel--;
                     //to do: Increase the drunk level here.
-
                 }
             }
         }
