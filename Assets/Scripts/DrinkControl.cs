@@ -10,16 +10,16 @@ public class DrinkControl : MonoBehaviour {
     
     private float drunkLevel;
 
-    private float timer;
+    private float delayTimer;
     private bool hasTimerStarted;
     private bool increaseAlpha;
     
 
     private void Start()
     {
-        drunkLevel = 1.0f;
+        drunkLevel = 0.0f;
 
-        timer = 0.0f;
+        delayTimer = 0.0f;
         increaseAlpha = false;
         hasTimerStarted = false;
 
@@ -30,13 +30,21 @@ public class DrinkControl : MonoBehaviour {
        
         if(hasTimerStarted == true)
         {
-
-            //Debug.Log()
-            timer += Time.deltaTime;
-            if((int) timer == 3)
+            delayTimer += Time.deltaTime;
+            if((int)delayTimer == 3)
             {
                 increaseAlpha = true;
                 hasTimerStarted = false;
+            }
+        }
+
+        if(increaseAlpha == true)
+        {
+            drunkLevel += 0.001f;
+            Debug.Log("Drunk Level" + drunkLevel);
+            if(drunkLevel >= 1.0f)
+            {
+                drunkLevel = 1.0f;
             }
         }
         
@@ -44,22 +52,16 @@ public class DrinkControl : MonoBehaviour {
     // Use this for initialization
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Drink"))
-        {
-            Player.GetComponent<DrunkBarControl>().DrunkLevel += 30;
-
-            timer = 0.0f;
-            hasTimerStarted = true;
-
-        }
-
         if (other.CompareTag("Glass"))
         {
             if (other.gameObject.GetComponent<GlassControl>().FillLevel > 0)
             {
                 other.gameObject.GetComponent<GlassControl>().FillLevel--;
                 //to do: Increase the drunk level here.
-
+                drunkLevel += 0.2f;
+                delayTimer = 0.0f;
+                hasTimerStarted = true;
+                increaseAlpha = false;
             }
         }
     }
