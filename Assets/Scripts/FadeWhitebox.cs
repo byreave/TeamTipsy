@@ -22,7 +22,7 @@ public class FadeWhitebox : MonoBehaviour {
 	void Update () {
         foreach(MeshRenderer child in renderers)
         {
-            child.material.color = new Color(child.material.color.r,child.material.color.g,child.material.color.b,alphaLevel);
+            //child.material.color = new Color(child.material.color.r,child.material.color.g,child.material.color.b,alphaLevel);
         }
 		
 	}
