@@ -5,6 +5,7 @@ using UnityEngine;
 public class GlassControl : MonoBehaviour {
 
     public GameObject MySpoon;
+    public GameObject SpoonToGrab;
     public int FillLevel = 0;
     public int DripCount = 0;
     [SerializeField]
@@ -15,6 +16,7 @@ public class GlassControl : MonoBehaviour {
     private GameObject WaterLevel2;
     [SerializeField]
     private GameObject WaterLevel3;
+    bool ReadyToAttachSpoon = true;
     // Use this for initialization
     void Start () {
 		
@@ -40,13 +42,32 @@ public class GlassControl : MonoBehaviour {
             WaterLevel3.SetActive(true);
         else if (WaterLevel3.activeSelf && FillLevel != 3)
             WaterLevel3.SetActive(false);
+        if(FillLevel == 3 && MySpoon.activeSelf)
+        {
+            MySpoon.GetComponent<SpoonControl>().DripCount = 0;
+            MySpoon.GetComponent<SpoonControl>().SugarCubeMelt3.SetActive(false);
+            MySpoon.SetActive(false);
+            Instantiate(SpoonToGrab, MySpoon.transform.position, MySpoon.transform.rotation);
+            ReadyToAttachSpoon = false;
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Spoon"))
+        if (collision.gameObject.CompareTag("Spoon") && ReadyToAttachSpoon)
         {
             Destroy(collision.gameObject);
             MySpoon.SetActive(true);
         }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Spoon"))
+        {
+            ReadyToAttachSpoon = true;
+        }
+    }
+    private void OnParticleCollision(GameObject other)
+    {
+        DripCount++;
     }
 }

@@ -15,7 +15,7 @@ public class IllusionFade : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log("Alpha: " + gameObject.GetComponent<SpriteRenderer>().color.a);
+        //Debug.Log("Alpha: " + gameObject.GetComponent<SpriteRenderer>().color.a);
         if(isFading == true)
         {
             StartCoroutine(FadeTo(alpha, 1.0f));
