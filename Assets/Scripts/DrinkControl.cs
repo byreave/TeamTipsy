@@ -35,7 +35,9 @@ public class DrinkControl : MonoBehaviour {
     private void Update()
     {
         illusion.alpha = drunkLevel;
-        if(hasTimerStarted == true)
+        Debug.Log("Drunk Level" + drunkLevel);
+
+        if (hasTimerStarted == true)
         {
             delayTimer += Time.deltaTime;
             if((int)delayTimer == 3)
@@ -49,10 +51,7 @@ public class DrinkControl : MonoBehaviour {
 
         if(increaseAlpha == true)
         {
-            illusion.isFading = true;
-            illusion.fadeOff = false;
-            drunkLevel -= 0.001f;
-            Debug.Log("Drunk Level" + drunkLevel);
+            drunkLevel -= 0.0001f;
             if(drunkLevel <= 0.0f)
             {
                 drunkLevel = 0.0f;
@@ -61,19 +60,17 @@ public class DrinkControl : MonoBehaviour {
         if (drunkLevel >= 0.75)
         {
             fiftyGlass.GetComponent<MeshRenderer>().enabled = true;
-            fiftyGlass.GetComponent<BoxCollider>().enabled = true;
 
             sevenFiveGlass.GetComponent<MeshRenderer>().enabled = true;
-            sevenFiveGlass.GetComponent<BoxCollider>().enabled = true;
 
         }
         else
         {
             fiftyGlass.GetComponent<MeshRenderer>().enabled = false;
-            fiftyGlass.GetComponent<BoxCollider>().enabled = false;
+            fiftyGlass.GetComponent<Rigidbody>().isKinematic = true;
 
             sevenFiveGlass.GetComponent<MeshRenderer>().enabled = false;
-            sevenFiveGlass.GetComponent<BoxCollider>().enabled = false;
+            sevenFiveGlass.GetComponent<Rigidbody>().isKinematic = false;
         }
         
     }
@@ -86,11 +83,16 @@ public class DrinkControl : MonoBehaviour {
             {
                 other.gameObject.GetComponent<GlassControl>().FillLevel--;
                 //to do: Increase the drunk level here.
-                drunkLevel += 0.3f;
+                drunkLevel += 0.4f;
+                illusion.alpha = drunkLevel;
+                //illusion.alpha+= 0.5f;
+
+
                 delayTimer = 0.0f;
                 hasTimerStarted = true;
                 increaseAlpha = false;
-                illusion.isFading = false;
+                illusion.isFading = true;
+                illusion.fadeOff = false;
 
 
             }
@@ -99,18 +101,6 @@ public class DrinkControl : MonoBehaviour {
  
     private void OnTriggerStay(Collider other)
     {
-        //if drunk, the glass's water level should be reduced.
-       /* if (other.CompareTag("Glass"))
-        {
-            //currently don't rotate.
-            //if(other.gameObject.transform.rotation.x > 0.75f || other.gameObject.transform.rotation.x < -0.75f)
-            {
-                if(other.gameObject.GetComponent<GlassControl>().FillLevel > 0)
-                {
-                    other.gameObject.GetComponent<GlassControl>().FillLevel--;
-                    //to do: Increase the drunk level here.
-                }
-            }
-        }*/
+       
     }
 }
