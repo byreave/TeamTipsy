@@ -10,6 +10,8 @@ TagManager:
   - Sugar
   - Spoon
   - Glass
+  - Collider1
+  - Collider2
   layers:
   - Default
   - TransparentFX

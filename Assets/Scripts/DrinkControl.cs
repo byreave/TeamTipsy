@@ -2,21 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DrinkControl : MonoBehaviour {
+public class DrinkControl : MonoBehaviour
+{
 
     // Use this for initialization
     public GameObject Player;
     public GameObject drinkingWall;
-    public GameObject fiftyGlass;
-    public GameObject sevenFiveGlass;
-    
+    public GameObject illusionGlass1;
+    public GameObject illusionGlass2;
+    public GameObject illusionGlass3;
+    public GameObject illusionGlass4;
+
     private float drunkLevel;
 
     private float delayTimer;
     private bool hasTimerStarted;
     private bool increaseAlpha;
     private IllusionFade illusion;
-    
+
 
     private void Start()
     {
@@ -27,6 +30,10 @@ public class DrinkControl : MonoBehaviour {
         hasTimerStarted = false;
 
         illusion = drinkingWall.GetComponent<IllusionFade>();
+        illusionGlass1.GetComponent<MeshRenderer>().enabled = false;
+        illusionGlass2.GetComponent<MeshRenderer>().enabled = false;
+        illusionGlass3.GetComponent<MeshRenderer>().enabled = false;
+        illusionGlass4.GetComponent<MeshRenderer>().enabled = false;
 
 
 
@@ -35,12 +42,11 @@ public class DrinkControl : MonoBehaviour {
     private void Update()
     {
         illusion.alpha = drunkLevel;
-        Debug.Log("Drunk Level" + drunkLevel);
 
         if (hasTimerStarted == true)
         {
             delayTimer += Time.deltaTime;
-            if((int)delayTimer == 3)
+            if ((int)delayTimer == 2)
             {
                 increaseAlpha = true;
                 hasTimerStarted = false;
@@ -49,33 +55,22 @@ public class DrinkControl : MonoBehaviour {
             }
         }
 
-        if(increaseAlpha == true)
+        if (increaseAlpha == true)
         {
-            drunkLevel -= 0.0001f;
-            if(drunkLevel <= 0.0f)
+            Debug.Log("Delay Timer is now activated!");
+            drunkLevel -= 0.001f;
+            if (drunkLevel <= 0.0f)
             {
                 drunkLevel = 0.0f;
             }
         }
 
-        if (drunkLevel >= 1.0f)
-            drunkLevel = 1.0f;
-        if (drunkLevel >= 0.75)
+        if (drunkLevel >= 2.0f)
         {
-            fiftyGlass.GetComponent<MeshRenderer>().enabled = true;
-
-            sevenFiveGlass.GetComponent<MeshRenderer>().enabled = true;
+            Debug.Log("Double Vision");
 
         }
-        else
-        {
-            fiftyGlass.GetComponent<MeshRenderer>().enabled = false;
-            fiftyGlass.GetComponent<Rigidbody>().isKinematic = true;
 
-            sevenFiveGlass.GetComponent<MeshRenderer>().enabled = false;
-            sevenFiveGlass.GetComponent<Rigidbody>().isKinematic = false;
-        }
-        
     }
     // Use this for initialization
     private void OnTriggerEnter(Collider other)
@@ -86,9 +81,9 @@ public class DrinkControl : MonoBehaviour {
             {
                 other.gameObject.GetComponent<GlassControl>().FillLevel--;
                 //to do: Increase the drunk level here.
-                drunkLevel += 0.4f;
+                drunkLevel += 1.0f;
+
                 illusion.alpha = drunkLevel;
-                //illusion.alpha+= 0.5f;
 
 
                 delayTimer = 0.0f;
@@ -100,10 +95,52 @@ public class DrinkControl : MonoBehaviour {
 
             }
         }
+
+        if (other.CompareTag("Collider1") && drunkLevel >= 2.0f)
+        {
+            illusionGlass2.GetComponent<MeshRenderer>().enabled = true;
+            illusionGlass3.GetComponent<MeshRenderer>().enabled = true;
+
+        }
+
+        if (other.CompareTag("Collider2") && drunkLevel >= 2.0f)
+        {
+            illusionGlass1.GetComponent<MeshRenderer>().enabled = true;
+            illusionGlass4.GetComponent<MeshRenderer>().enabled = true;
+        }
     }
- 
     private void OnTriggerStay(Collider other)
     {
-       
+        if (other.CompareTag("Collider1") && drunkLevel >= 2.0f)
+        {
+            illusionGlass2.GetComponent<MeshRenderer>().enabled = true;
+            illusionGlass3.GetComponent<MeshRenderer>().enabled = true;
+
+        }
+
+        if (other.CompareTag("Collider2") && drunkLevel >= 2.0f)
+        {
+            illusionGlass1.GetComponent<MeshRenderer>().enabled = true;
+            illusionGlass4.GetComponent<MeshRenderer>().enabled = true;
+            illusionGlass2.GetComponent<MeshRenderer>().enabled = true;
+            illusionGlass3.GetComponent<MeshRenderer>().enabled = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Collider1") && drunkLevel >= 2.0f)
+        {
+            illusionGlass2.GetComponent<MeshRenderer>().enabled = false;
+            illusionGlass3.GetComponent<MeshRenderer>().enabled = false;
+
+        }
+
+        if (other.CompareTag("Collider2") && drunkLevel >= 2.0f)
+        {
+            illusionGlass1.GetComponent<MeshRenderer>().enabled = false;
+            illusionGlass4.GetComponent<MeshRenderer>().enabled = false;
+
+        }
     }
 }
