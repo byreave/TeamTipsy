@@ -57,6 +57,9 @@ public class DrinkControl : MonoBehaviour {
                 drunkLevel = 0.0f;
             }
         }
+
+        if (drunkLevel >= 1.0f)
+            drunkLevel = 1.0f;
         if (drunkLevel >= 0.75)
         {
             fiftyGlass.GetComponent<MeshRenderer>().enabled = true;
