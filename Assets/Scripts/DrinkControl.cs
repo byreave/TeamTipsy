@@ -71,6 +71,8 @@ public class DrinkControl : MonoBehaviour
 
         }
 
+
+
     }
     // Use this for initialization
     private void OnTriggerEnter(Collider other)
@@ -91,6 +93,8 @@ public class DrinkControl : MonoBehaviour
                 increaseAlpha = false;
                 illusion.isFading = true;
                 illusion.fadeOff = false;
+
+                //TO DO: Add the particle effect here!
 
 
             }
