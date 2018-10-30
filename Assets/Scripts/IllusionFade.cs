@@ -21,7 +21,7 @@ public class IllusionFade : MonoBehaviour {
         //Debug.Log("Alpha: " + gameObject.GetComponent<SpriteRenderer>().color.a);
         if(isFading == true)
         {
-            StartCoroutine(FadeTo(alpha, 5.0f, gameObject.GetComponent<SpriteRenderer>().materials[1]));
+            StartCoroutine(FadeTo(alpha, 1.0f, gameObject.GetComponent<SpriteRenderer>().materials[1]));
             isFading = false;
         }
         else

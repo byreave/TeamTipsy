@@ -12,6 +12,7 @@ public class DrinkControl : MonoBehaviour
     public GameObject illusionGlass2;
     public GameObject illusionGlass3;
     public GameObject illusionGlass4;
+    public ParticleSystem greenParticle;
 
     private float drunkLevel;
 
@@ -19,6 +20,8 @@ public class DrinkControl : MonoBehaviour
     private bool hasTimerStarted;
     private bool increaseAlpha;
     private IllusionFade illusion;
+
+
 
 
     private void Start()
@@ -95,6 +98,8 @@ public class DrinkControl : MonoBehaviour
                 illusion.fadeOff = false;
 
                 //TO DO: Add the particle effect here!
+                greenParticle.Play();
+                
 
 
             }
