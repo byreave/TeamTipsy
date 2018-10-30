@@ -9,13 +9,11 @@ public class GlassControl : MonoBehaviour {
     public int FillLevel = 0;
     public int DripCount = 0;
     [SerializeField]
+    private int MaxFillLevel = 1;
+    [SerializeField]
     private int DripToFill = 10;
     [SerializeField]
-    private GameObject WaterLevel1;
-    [SerializeField]
-    private GameObject WaterLevel2;
-    [SerializeField]
-    private GameObject WaterLevel3;
+    private GameObject WaterFill;
     bool ReadyToAttachSpoon = true;
     // Use this for initialization
     void Start () {
@@ -26,23 +24,27 @@ public class GlassControl : MonoBehaviour {
 	void Update () {
 		if(DripCount >= DripToFill)
         {
-            if(FillLevel < 3)
+            if(FillLevel < MaxFillLevel)
                 FillLevel++;
             DripCount -= DripToFill;
         }
-        if (!WaterLevel1.activeSelf && FillLevel == 1)
-            WaterLevel1.SetActive(true);
-        else if (WaterLevel1.activeSelf && FillLevel != 1)
-            WaterLevel1.SetActive(false);
-        if (!WaterLevel2.activeSelf && FillLevel == 2)
-            WaterLevel2.SetActive(true);
-        else if (WaterLevel2.activeSelf && FillLevel != 2)
-            WaterLevel2.SetActive(false);
-        if (!WaterLevel3.activeSelf && FillLevel == 3)
-            WaterLevel3.SetActive(true);
-        else if (WaterLevel3.activeSelf && FillLevel != 3)
-            WaterLevel3.SetActive(false);
-        if(FillLevel == 3 && MySpoon.activeSelf)
+        //if (!WaterLevel1.activeSelf && FillLevel == 1)
+        //    WaterLevel1.SetActive(true);
+        //else if (WaterLevel1.activeSelf && FillLevel != 1)
+        //    WaterLevel1.SetActive(false);
+        //if (!WaterLevel2.activeSelf && FillLevel == 2)
+        //    WaterLevel2.SetActive(true);
+        //else if (WaterLevel2.activeSelf && FillLevel != 2)
+        //    WaterLevel2.SetActive(false);
+        //if (!WaterLevel3.activeSelf && FillLevel == 3)
+        //    WaterLevel3.SetActive(true);
+        //else if (WaterLevel3.activeSelf && FillLevel != 3)
+        //    WaterLevel3.SetActive(false);
+        if (FillLevel == MaxFillLevel)
+            WaterFill.SetActive(true);
+        else if (WaterFill.activeSelf == true)
+            WaterFill.SetActive(false);
+        if(FillLevel == MaxFillLevel && MySpoon.activeSelf)
         {
             MySpoon.GetComponent<SpoonControl>().DripCount = 0;
             MySpoon.GetComponent<SpoonControl>().SugarCubeMelt3.SetActive(false);

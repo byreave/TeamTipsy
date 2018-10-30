@@ -40,6 +40,7 @@ namespace HoloToolkit.Unity.InputModule.Examples.Grabbables
             base.OnGrabStay();
             //TODO: Time.time should not be in here. this means that the amount of lag would be dependent on the amount of time spent in the level...
             transform.position = Vector3.Lerp(transform.position, GrabberPrimary.GrabHandle.position, Time.time / (lagAmount * 1000));
+            transform.rotation = GrabberPrimary.GrabHandle.rotation;
         }
     }
 }
