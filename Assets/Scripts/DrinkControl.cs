@@ -51,6 +51,11 @@ public class DrinkControl : MonoBehaviour
     {
         illusion.alpha = drunkLevel;
 
+        if((drunkLevel >=1.0f))
+        {
+            sb.iterations = (int)drunkLevel;
+        }
+
         if (hasTimerStarted == true)
         {
             delayTimer += Time.deltaTime;
@@ -71,6 +76,8 @@ public class DrinkControl : MonoBehaviour
             {
                 drunkLevel = 0.0f;
             }
+
+            
         }
 
         if (drunkLevel >= 2.0f)
@@ -99,9 +106,9 @@ public class DrinkControl : MonoBehaviour
                 drunkLevel += 1.0f;
                 sb.interpolation = 1;
                 sb.downsample = 2;
-                sb.iterations += 1;
 
                 illusion.alpha = drunkLevel;
+                sb.iterations = (int)drunkLevel;
 
 
                 delayTimer = 0.0f;
