@@ -13,9 +13,10 @@ public class DrinkControl : MonoBehaviour
     public GameObject illusionGlass3;
     public GameObject illusionGlass4;
     public ParticleSystem greenParticle;
+    public Camera mainCamera;
 
     private float drunkLevel;
-
+    private SuperBlurBase sb;
     private float delayTimer;
     private bool hasTimerStarted;
     private bool increaseAlpha;
@@ -31,6 +32,10 @@ public class DrinkControl : MonoBehaviour
         delayTimer = 0.0f;
         increaseAlpha = false;
         hasTimerStarted = false;
+
+        sb = mainCamera.GetComponent<SuperBlurBase>();
+        sb.interpolation = 0;
+        sb.downsample = 0;
 
         illusion = drinkingWall.GetComponent<IllusionFade>();
         illusionGlass1.GetComponent<MeshRenderer>().enabled = false;
@@ -74,6 +79,11 @@ public class DrinkControl : MonoBehaviour
 
         }
 
+        if(drunkLevel >=5.0)
+        {
+            Debug.Log("Game over");
+        }
+
 
 
     }
@@ -87,6 +97,9 @@ public class DrinkControl : MonoBehaviour
                 other.gameObject.GetComponent<GlassControl>().FillLevel--;
                 //to do: Increase the drunk level here.
                 drunkLevel += 1.0f;
+                sb.interpolation = 1;
+                sb.downsample = 2;
+                sb.iterations += 1;
 
                 illusion.alpha = drunkLevel;
 
