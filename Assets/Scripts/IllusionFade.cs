@@ -14,6 +14,7 @@ public class IllusionFade : MonoBehaviour {
         gameObject.GetComponent<SpriteRenderer>().materials[0].color = new Color(gameObject.GetComponent<SpriteRenderer>().color.r, gameObject.GetComponent<SpriteRenderer>().color.g, gameObject.GetComponent<SpriteRenderer>().color.b, 1.0f);
         gameObject.GetComponent<SpriteRenderer>().materials[1].color = new Color(gameObject.GetComponent<SpriteRenderer>().color.r, gameObject.GetComponent<SpriteRenderer>().color.g, gameObject.GetComponent<SpriteRenderer>().color.b, 0.0f);
 
+       
     }
 
     // Update is called once per frame

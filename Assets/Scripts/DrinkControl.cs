@@ -7,19 +7,19 @@ public class DrinkControl : MonoBehaviour
 
     // Use this for initialization
     public GameObject Player;
-    public GameObject drinkingWall;
     public GameObject illusionGlass1;
     public GameObject illusionGlass2;
     public GameObject illusionGlass3;
     public GameObject illusionGlass4;
     public ParticleSystem greenParticle;
+    public Camera mainCamera;
 
     private float drunkLevel;
-
+    private SuperBlurBase sb;
     private float delayTimer;
     private bool hasTimerStarted;
     private bool increaseAlpha;
-    private IllusionFade illusion;
+    //private IllusionFade illusion;
 
 
 
@@ -32,7 +32,18 @@ public class DrinkControl : MonoBehaviour
         increaseAlpha = false;
         hasTimerStarted = false;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+        //illusion = drinkingWall.GetComponent<IllusionFade>();
+=======
+=======
+>>>>>>> 1796a546bedd99447e7ead80612d83f8126940f8
+        sb = mainCamera.GetComponent<SuperBlurBase>();
+        sb.interpolation = 0;
+        sb.downsample = 0;
+
         illusion = drinkingWall.GetComponent<IllusionFade>();
+>>>>>>> 1796a546bedd99447e7ead80612d83f8126940f8
         illusionGlass1.GetComponent<MeshRenderer>().enabled = false;
         illusionGlass2.GetComponent<MeshRenderer>().enabled = false;
         illusionGlass3.GetComponent<MeshRenderer>().enabled = false;
@@ -44,7 +55,17 @@ public class DrinkControl : MonoBehaviour
 
     private void Update()
     {
-        illusion.alpha = drunkLevel;
+        //illusion.alpha = drunkLevel;
+
+        if((drunkLevel >=1.0f))
+        {
+            sb.iterations = (int)drunkLevel;
+        }
+
+        if((drunkLevel >=1.0f))
+        {
+            sb.iterations = (int)drunkLevel;
+        }
 
         if (hasTimerStarted == true)
         {
@@ -53,7 +74,7 @@ public class DrinkControl : MonoBehaviour
             {
                 increaseAlpha = true;
                 hasTimerStarted = false;
-                illusion.fadeOff = true;
+                //illusion.fadeOff = true;
 
             }
         }
@@ -66,12 +87,19 @@ public class DrinkControl : MonoBehaviour
             {
                 drunkLevel = 0.0f;
             }
+
+            
         }
 
         if (drunkLevel >= 2.0f)
         {
             Debug.Log("Double Vision");
 
+        }
+
+        if(drunkLevel >=5.0)
+        {
+            Debug.Log("Game over");
         }
 
 
@@ -87,15 +115,25 @@ public class DrinkControl : MonoBehaviour
                 other.gameObject.GetComponent<GlassControl>().FillLevel--;
                 //to do: Increase the drunk level here.
                 drunkLevel += 1.0f;
+                sb.interpolation = 1;
+                sb.downsample = 2;
 
+<<<<<<< HEAD
+                //illusion.alpha = drunkLevel;
+=======
                 illusion.alpha = drunkLevel;
+                sb.iterations = (int)drunkLevel;
+<<<<<<< HEAD
+>>>>>>> 1796a546bedd99447e7ead80612d83f8126940f8
+=======
+>>>>>>> 1796a546bedd99447e7ead80612d83f8126940f8
 
 
                 delayTimer = 0.0f;
                 hasTimerStarted = true;
                 increaseAlpha = false;
-                illusion.isFading = true;
-                illusion.fadeOff = false;
+                //illusion.isFading = true;
+                //illusion.fadeOff = false;
 
                 //TO DO: Add the particle effect here!
                 greenParticle.Play();
