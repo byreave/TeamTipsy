@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/World.unity
-    guid: 64a5e87f67cdf1b44927295bc073e540
+    path: Assets/Scenes/Byreave's World.unity
+    guid: 9be6915a2153f4e439fafb7d62117cdf
   m_configObjects: {}
