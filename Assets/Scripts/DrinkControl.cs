@@ -34,8 +34,11 @@ public class DrinkControl : MonoBehaviour
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         //illusion = drinkingWall.GetComponent<IllusionFade>();
 =======
+=======
+>>>>>>> 1796a546bedd99447e7ead80612d83f8126940f8
 =======
 >>>>>>> 1796a546bedd99447e7ead80612d83f8126940f8
         sb = mainCamera.GetComponent<SuperBlurBase>();
@@ -56,6 +59,11 @@ public class DrinkControl : MonoBehaviour
     private void Update()
     {
         //illusion.alpha = drunkLevel;
+
+        if((drunkLevel >=1.0f))
+        {
+            sb.iterations = (int)drunkLevel;
+        }
 
         if((drunkLevel >=1.0f))
         {
@@ -124,6 +132,9 @@ public class DrinkControl : MonoBehaviour
                 illusion.alpha = drunkLevel;
                 sb.iterations = (int)drunkLevel;
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 1796a546bedd99447e7ead80612d83f8126940f8
+=======
 >>>>>>> 1796a546bedd99447e7ead80612d83f8126940f8
 =======
 >>>>>>> 1796a546bedd99447e7ead80612d83f8126940f8
