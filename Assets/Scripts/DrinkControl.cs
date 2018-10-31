@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PostProcessing;
 public class DrinkControl : MonoBehaviour
 {
     // Use this for initialization
@@ -11,7 +12,8 @@ public class DrinkControl : MonoBehaviour
     public GameObject illusionGlass3;
     public GameObject illusionGlass4;
     public ParticleSystem greenParticle;
-
+    [SerializeField]
+    private PostProcessingProfile ppp;
     [SerializeField]
     private float DrunkFadeDelayTime = 2.0f;
     [SerializeField]
@@ -20,6 +22,10 @@ public class DrinkControl : MonoBehaviour
     private float IllusionDrunkLevel = 2.0f;
     [SerializeField]
     private float BlackoutDrunkLevel = 5.0f;
+    [SerializeField]
+    private float MotionBlurDrunkLevel = 4.0f;
+    [SerializeField]
+    private float VignetteDrunkLevel = 3.0f;
     //public Camera mainCamera;
     private float drunkLevel;
     //private SuperBlurBase sb;
@@ -29,6 +35,8 @@ public class DrinkControl : MonoBehaviour
     //private IllusionFade illusion;
     private void Start()
     {
+        ppp = Camera.main.GetComponent<PostProcessingBehaviour>().profile;
+        
         drunkLevel = 0.0f;
         delayTimer = 0.0f;
         increaseAlpha = false;
@@ -44,6 +52,17 @@ public class DrinkControl : MonoBehaviour
     }
     private void Update()
     {
+        var MotionBlurSetting = ppp.motionBlur.settings;
+        var VignetteSetting = ppp.vignette.settings;
+
+        if (drunkLevel >= VignetteDrunkLevel)
+            VignetteSetting.intensity = drunkLevel / BlackoutDrunkLevel;
+        else
+            VignetteSetting.intensity = 0.0f;
+        MotionBlurSetting.frameBlending = drunkLevel / MotionBlurDrunkLevel;
+
+        ppp.motionBlur.settings = MotionBlurSetting;
+        ppp.vignette.settings = VignetteSetting;
        // illusion.alpha = drunkLevel;
         if (( drunkLevel >= 1.0f ))
         {
