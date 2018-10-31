@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 33964954706078014}
   - component: {fileID: 23880076163044768}
   - component: {fileID: 54855820055632326}
-  - component: {fileID: 64602658097382962}
   - component: {fileID: 114239800023718998}
+  - component: {fileID: 65966751596905162}
   m_Layer: 0
   m_Name: RightHand
   m_TagString: Untagged
@@ -101,8 +101,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &64602658097382962
-MeshCollider:
+--- !u!65 &65966751596905162
+BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -110,11 +110,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 328d5ab97a354784c9277c403706ad10, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.8909438, y: 0.42114943, z: 0.94458115}
+  m_Center: {x: 0.020985771, y: 0, z: -0.39644018}
 --- !u!114 &114239800023718998
 MonoBehaviour:
   m_ObjectHideFlags: 1

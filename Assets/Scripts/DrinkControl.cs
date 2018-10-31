@@ -5,29 +5,38 @@ public class DrinkControl : MonoBehaviour
 {
     // Use this for initialization
     public GameObject Player;
-    public GameObject drinkingWall;
+    public GameObject Walls;
     public GameObject illusionGlass1;
     public GameObject illusionGlass2;
     public GameObject illusionGlass3;
     public GameObject illusionGlass4;
     public ParticleSystem greenParticle;
-    public Camera mainCamera;
+
+    [SerializeField]
+    private float DrunkFadeDelayTime = 2.0f;
+    [SerializeField]
+    private float DrunkFadeSpeed = 0.1f;
+    [SerializeField]
+    private float IllusionDrunkLevel = 2.0f;
+    [SerializeField]
+    private float BlackoutDrunkLevel = 5.0f;
+    //public Camera mainCamera;
     private float drunkLevel;
-    private SuperBlurBase sb;
+    //private SuperBlurBase sb;
     private float delayTimer;
     private bool hasTimerStarted;
     private bool increaseAlpha;
-    private IllusionFade illusion;
+    //private IllusionFade illusion;
     private void Start()
     {
         drunkLevel = 0.0f;
         delayTimer = 0.0f;
         increaseAlpha = false;
         hasTimerStarted = false;
-        sb = mainCamera.GetComponent<SuperBlurBase>();
-        sb.interpolation = 0;
-        sb.downsample = 0;
-        illusion = drinkingWall.GetComponent<IllusionFade>();
+        //sb = mainCamera.GetComponent<SuperBlurBase>();
+        //sb.interpolation = 0;
+        //sb.downsample = 0;
+      //  illusion = drinkingWall.GetComponent<IllusionFade>();
         illusionGlass1.GetComponent<MeshRenderer>().enabled = false;
         illusionGlass2.GetComponent<MeshRenderer>().enabled = false;
         illusionGlass3.GetComponent<MeshRenderer>().enabled = false;
@@ -35,39 +44,38 @@ public class DrinkControl : MonoBehaviour
     }
     private void Update()
     {
-        illusion.alpha = drunkLevel;
+       // illusion.alpha = drunkLevel;
         if (( drunkLevel >= 1.0f ))
         {
-            sb.iterations = (int)drunkLevel;
+            //sb.iterations = (int)drunkLevel;
         }
         if (hasTimerStarted == true)
         {
             delayTimer += Time.deltaTime;
-            if ((int)delayTimer == 2)
+            if (delayTimer >= DrunkFadeDelayTime)
             {
                 increaseAlpha = true;
                 hasTimerStarted = false;
-                illusion.fadeOff = true;
+                //illusion.fadeOff = true;
             }
         }
         if (increaseAlpha == true)
         {
             Debug.Log("Delay Timer is now activated!");
-            drunkLevel -= 0.001f;
-            if (drunkLevel <= 0.0f)
-            {
-                drunkLevel = 0.0f;
-            }
+            if(drunkLevel >= 0)
+                drunkLevel -= DrunkFadeSpeed * Time.deltaTime;
 
         }
-        if (drunkLevel >= 2.0f)
+        if (drunkLevel >= IllusionDrunkLevel)
         {
             Debug.Log("Double Vision");
         }
-        if (drunkLevel >= 5.0)
+        if (drunkLevel >= BlackoutDrunkLevel)
         {
             Debug.Log("Game over");
         }
+        //set walls drunk level
+        Walls.GetComponent<WallFadeControl>().DrunkLevel = drunkLevel;
     }
     // Use this for initialization
     private void OnTriggerEnter(Collider other)
@@ -79,26 +87,26 @@ public class DrinkControl : MonoBehaviour
                 other.gameObject.GetComponent<GlassControl>().FillLevel--;
                 //to do: Increase the drunk level here.
                 drunkLevel += 1.0f;
-                sb.interpolation = 1;
-                sb.downsample = 2;
-                illusion.alpha = drunkLevel;
-                sb.iterations = (int)drunkLevel;
+                //sb.interpolation = 1;
+                //sb.downsample = 2;
+                //illusion.alpha = drunkLevel;
+                //sb.iterations = (int)drunkLevel;
                 delayTimer = 0.0f;
                 hasTimerStarted = true;
                 increaseAlpha = false;
-                illusion.isFading = true;
-                illusion.fadeOff = false;
+                //illusion.isFading = true;
+                //illusion.fadeOff = false;
                 //TO DO: Add the particle effect here!
                 greenParticle.Play();
 
             }
         }
-        if (other.CompareTag("Collider1") && drunkLevel >= 2.0f)
+        if (other.CompareTag("Collider1") && drunkLevel >= IllusionDrunkLevel)
         {
             illusionGlass2.GetComponent<MeshRenderer>().enabled = true;
             illusionGlass3.GetComponent<MeshRenderer>().enabled = true;
         }
-        if (other.CompareTag("Collider2") && drunkLevel >= 2.0f)
+        if (other.CompareTag("Collider2") && drunkLevel >= IllusionDrunkLevel)
         {
             illusionGlass1.GetComponent<MeshRenderer>().enabled = true;
             illusionGlass4.GetComponent<MeshRenderer>().enabled = true;
@@ -106,12 +114,12 @@ public class DrinkControl : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Collider1") && drunkLevel >= 2.0f)
+        if (other.CompareTag("Collider1") && drunkLevel >= IllusionDrunkLevel)
         {
             illusionGlass2.GetComponent<MeshRenderer>().enabled = true;
             illusionGlass3.GetComponent<MeshRenderer>().enabled = true;
         }
-        if (other.CompareTag("Collider2") && drunkLevel >= 2.0f)
+        if (other.CompareTag("Collider2") && drunkLevel >= IllusionDrunkLevel)
         {
             illusionGlass1.GetComponent<MeshRenderer>().enabled = true;
             illusionGlass4.GetComponent<MeshRenderer>().enabled = true;
@@ -121,12 +129,12 @@ public class DrinkControl : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Collider1") && drunkLevel >= 2.0f)
+        if (other.CompareTag("Collider1") && drunkLevel >= IllusionDrunkLevel)
         {
             illusionGlass2.GetComponent<MeshRenderer>().enabled = false;
             illusionGlass3.GetComponent<MeshRenderer>().enabled = false;
         }
-        if (other.CompareTag("Collider2") && drunkLevel >= 2.0f)
+        if (other.CompareTag("Collider2") && drunkLevel >= IllusionDrunkLevel)
         {
             illusionGlass1.GetComponent<MeshRenderer>().enabled = false;
             illusionGlass4.GetComponent<MeshRenderer>().enabled = false;

@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 
 
-
 	[RequireComponent(typeof(Camera))]
 	[AddComponentMenu("Effects/Super Blur Fast", -1)]
 	public class SuperBlurFast : SuperBlurBase 
@@ -33,17 +32,17 @@
 
 			m_Camera.targetTexture = null;
 
-			if (RenderModeFake == RenderModeFake.Screen)
+			if (renderMode == RenderModeFake.Screen)
 			{
 				Blur(rt, null);
 			}
-			else if (RenderModeFake == RenderModeFake.UI)
+			else if (renderMode == RenderModeFake.UI)
 			{
 				Blur(rt, rt);
 				UIMaterial.SetTexture(Uniforms._BackgroundTexture, rt);
 				Graphics.Blit(rt, null, blurMaterial, 0);
 			}
-			else if (RenderModeFake == RenderModeFake.OnlyUI)
+			else if (renderMode == RenderModeFake.OnlyUI)
 			{
 				Blur(rt, rt);
 				UIMaterial.SetTexture(Uniforms._BackgroundTexture, rt);

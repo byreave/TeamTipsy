@@ -9,7 +9,7 @@
 			public static readonly int _BackgroundTexture = Shader.PropertyToID("_SuperBlurTexture");
 		}
 
-		public RenderModeFake RenderModeFake = RenderModeFake.Screen;
+		public RenderModeFake renderMode = RenderModeFake.Screen;
 
 		public BlurKernelSize kernelSize = BlurKernelSize.Small;
 
@@ -96,5 +96,4 @@
 		UI,
 		OnlyUI
 	}
-
 
