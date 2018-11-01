@@ -84,6 +84,7 @@ public class DrinkControl : MonoBehaviour
                 //illusion.fadeOff = true;
             }
         }
+
         if (increaseAlpha == true)
         {
             Debug.Log("Delay Timer is now activated!");
@@ -97,6 +98,8 @@ public class DrinkControl : MonoBehaviour
         }
         if (drunkLevel >= BlackoutDrunkLevel)
         {
+            drunkLevel = BlackoutDrunkLevel;
+
             Debug.Log("Game over");
         }
         //set walls drunk level
