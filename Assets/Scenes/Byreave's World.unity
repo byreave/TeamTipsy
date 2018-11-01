@@ -746,6 +746,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0007554916, y: 0.0029899317, z: 0.003847515}
   m_Center: {x: 0, y: 0, z: 0.000113751266}
+--- !u!1 &1200603608 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1753366110489328, guid: 1d07524f8dd406f44b6d950c0754b60a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1769302507}
 --- !u!4 &1406170890 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4815401762053914, guid: 539d30f17115462429fb5373fd53fe69,
@@ -1209,7 +1214,7 @@ MonoBehaviour:
   illusionGlass2: {fileID: 979186468}
   illusionGlass3: {fileID: 1861614428}
   illusionGlass4: {fileID: 1537336489}
-  gameEndText: {fileID: 0}
+  gameEndText: {fileID: 1200603608}
   greenParticle: {fileID: 1685433412}
   DrunkFadeDelayTime: 2
   DrunkFadeSpeed: 0.1
