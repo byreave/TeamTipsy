@@ -12,7 +12,6 @@ public class DrinkControl : MonoBehaviour
     public GameObject illusionGlass3;
     public GameObject illusionGlass4;
     public ParticleSystem greenParticle;
-    [SerializeField]
     private PostProcessingProfile ppp;
     [SerializeField]
     private float DrunkFadeDelayTime = 2.0f;
@@ -53,16 +52,23 @@ public class DrinkControl : MonoBehaviour
     private void Update()
     {
         var MotionBlurSetting = ppp.motionBlur.settings;
+        
         var VignetteSetting = ppp.vignette.settings;
+        VignetteSetting.mode = VignetteModel.Mode.Masked;
 
         if (drunkLevel >= VignetteDrunkLevel)
-            VignetteSetting.intensity = drunkLevel / BlackoutDrunkLevel;
+            VignetteSetting.opacity = drunkLevel / BlackoutDrunkLevel;
         else
-            VignetteSetting.intensity = 0.0f;
+            VignetteSetting.opacity = 0.0f;
         MotionBlurSetting.frameBlending = drunkLevel / MotionBlurDrunkLevel;
 
         ppp.motionBlur.settings = MotionBlurSetting;
         ppp.vignette.settings = VignetteSetting;
+
+        if(VignetteSetting.opacity >=0.99f)
+        {
+            VignetteSetting.opacity = 0.99f;
+        }
        // illusion.alpha = drunkLevel;
         if (( drunkLevel >= 1.0f ))
         {
