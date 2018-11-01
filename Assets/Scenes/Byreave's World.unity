@@ -504,6 +504,21 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 5414dde612dfbe843824760201856e58, type: 2}
+    - target: {fileID: 23151036284225754, guid: 1849668030c331a4aa6d562c8b607b48,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e869799a299af342975d06d9626bef4, type: 2}
+    - target: {fileID: 23451012784404876, guid: 1849668030c331a4aa6d562c8b607b48,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 56c15d348b11fac458d69dbbef41fad9, type: 2}
+    - target: {fileID: 23404893999217496, guid: 1849668030c331a4aa6d562c8b607b48,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 799691be90c7f504d92eeb2b25901c0f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1849668030c331a4aa6d562c8b607b48, type: 2}
   m_IsPrefabAsset: 0
@@ -1195,7 +1210,6 @@ MonoBehaviour:
   illusionGlass3: {fileID: 1861614428}
   illusionGlass4: {fileID: 1537336489}
   greenParticle: {fileID: 1685433412}
-  ppp: {fileID: 0}
   DrunkFadeDelayTime: 2
   DrunkFadeSpeed: 0.1
   IllusionDrunkLevel: 2
