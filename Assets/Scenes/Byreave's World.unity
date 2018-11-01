@@ -1209,6 +1209,7 @@ MonoBehaviour:
   illusionGlass2: {fileID: 979186468}
   illusionGlass3: {fileID: 1861614428}
   illusionGlass4: {fileID: 1537336489}
+  gameEndText: {fileID: 0}
   greenParticle: {fileID: 1685433412}
   DrunkFadeDelayTime: 2
   DrunkFadeSpeed: 0.1
@@ -1230,15 +1231,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4778169112455830, guid: 1d07524f8dd406f44b6d950c0754b60a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2.24
+      value: -2.16
       objectReference: {fileID: 0}
     - target: {fileID: 4778169112455830, guid: 1d07524f8dd406f44b6d950c0754b60a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.456
+      value: 0.67
       objectReference: {fileID: 0}
     - target: {fileID: 4778169112455830, guid: 1d07524f8dd406f44b6d950c0754b60a, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 7.75
+      value: 7.51
       objectReference: {fileID: 0}
     - target: {fileID: 4778169112455830, guid: 1d07524f8dd406f44b6d950c0754b60a, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1263,7 +1264,8 @@ Prefab:
     - target: {fileID: 102757202885064054, guid: 1d07524f8dd406f44b6d950c0754b60a,
         type: 2}
       propertyPath: m_Text
-      value: GAME ENDED BITCH RESTART NOW
+      value: "You are too drunk to control yourself and have blacked out.\n Try to
+        take it slow next time ;)"
       objectReference: {fileID: 0}
     - target: {fileID: 4778169112455830, guid: 1d07524f8dd406f44b6d950c0754b60a, type: 2}
       propertyPath: m_LocalScale.x
@@ -1285,8 +1287,19 @@ Prefab:
     - target: {fileID: 102757202885064054, guid: 1d07524f8dd406f44b6d950c0754b60a,
         type: 2}
       propertyPath: m_FontSize
-      value: 182
+      value: 110
       objectReference: {fileID: 0}
+    - target: {fileID: 102757202885064054, guid: 1d07524f8dd406f44b6d950c0754b60a,
+        type: 2}
+      propertyPath: m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 2a056e2bb89e0134daaf49e5f183e5dc,
+        type: 3}
+    - target: {fileID: 23774782267795034, guid: 1d07524f8dd406f44b6d950c0754b60a,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2a056e2bb89e0134daaf49e5f183e5dc, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d07524f8dd406f44b6d950c0754b60a, type: 2}
   m_IsPrefabAsset: 0
