@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PostProcessing;
+using UnityEngine.SceneManagement;
 public class DrinkControl : MonoBehaviour
 {
     // Use this for initialization
@@ -11,6 +12,7 @@ public class DrinkControl : MonoBehaviour
     public GameObject illusionGlass2;
     public GameObject illusionGlass3;
     public GameObject illusionGlass4;
+    public GameObject gameEndText;
     public ParticleSystem greenParticle;
     private PostProcessingProfile ppp;
     [SerializeField]
@@ -32,7 +34,9 @@ public class DrinkControl : MonoBehaviour
     private void Start()
     {
         ppp = Camera.main.GetComponent<PostProcessingBehaviour>().profile;
-        
+        gameEndText.GetComponent<MeshRenderer>().enabled = false;
+
+
         drunkLevel = 0.0f;
         delayTimer = 0.0f;
         increaseAlpha = false;
@@ -92,11 +96,19 @@ public class DrinkControl : MonoBehaviour
         if (drunkLevel >= BlackoutDrunkLevel)
         {
             drunkLevel = BlackoutDrunkLevel;
-
+            gameEndText.GetComponent<MeshRenderer>().enabled = true;
+            StartCoroutine(RestartGame());
             Debug.Log("Game over");
         }
         //set walls drunk level
         Walls.GetComponent<WallFadeControl>().DrunkLevel = drunkLevel;
+    }
+
+    IEnumerator RestartGame()
+    {
+
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     // Use this for initialization
     private void OnTriggerEnter(Collider other)
