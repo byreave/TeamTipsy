@@ -1178,7 +1178,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 787527166}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1681065608
 BoxCollider:
@@ -1221,6 +1221,75 @@ ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 198721229611628550, guid: eec0ac10b0b4cc943a518c4d7b262fa6,
     type: 2}
   m_PrefabInternal: {fileID: 1579668696}
+--- !u!1001 &1769302507
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 787527166}
+    m_Modifications:
+    - target: {fileID: 4778169112455830, guid: 1d07524f8dd406f44b6d950c0754b60a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -2.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 4778169112455830, guid: 1d07524f8dd406f44b6d950c0754b60a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.456
+      objectReference: {fileID: 0}
+    - target: {fileID: 4778169112455830, guid: 1d07524f8dd406f44b6d950c0754b60a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 7.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4778169112455830, guid: 1d07524f8dd406f44b6d950c0754b60a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4778169112455830, guid: 1d07524f8dd406f44b6d950c0754b60a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4778169112455830, guid: 1d07524f8dd406f44b6d950c0754b60a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4778169112455830, guid: 1d07524f8dd406f44b6d950c0754b60a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4778169112455830, guid: 1d07524f8dd406f44b6d950c0754b60a, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 102757202885064054, guid: 1d07524f8dd406f44b6d950c0754b60a,
+        type: 2}
+      propertyPath: m_Text
+      value: GAME ENDED BITCH RESTART NOW
+      objectReference: {fileID: 0}
+    - target: {fileID: 4778169112455830, guid: 1d07524f8dd406f44b6d950c0754b60a, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.013794966
+      objectReference: {fileID: 0}
+    - target: {fileID: 4778169112455830, guid: 1d07524f8dd406f44b6d950c0754b60a, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.013794959
+      objectReference: {fileID: 0}
+    - target: {fileID: 4778169112455830, guid: 1d07524f8dd406f44b6d950c0754b60a, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.013794966
+      objectReference: {fileID: 0}
+    - target: {fileID: 102757202885064054, guid: 1d07524f8dd406f44b6d950c0754b60a,
+        type: 2}
+      propertyPath: m_Color.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 102757202885064054, guid: 1d07524f8dd406f44b6d950c0754b60a,
+        type: 2}
+      propertyPath: m_FontSize
+      value: 182
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1d07524f8dd406f44b6d950c0754b60a, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1773211475
 GameObject:
   m_ObjectHideFlags: 0
@@ -1558,6 +1627,14 @@ Prefab:
         type: 2}
       propertyPath: HoloLensQualityLevel
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4766909944503646, guid: d29bc40b7f3df26479d6a0aac211c355, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4600145158608852, guid: d29bc40b7f3df26479d6a0aac211c355, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d29bc40b7f3df26479d6a0aac211c355, type: 2}

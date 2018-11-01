@@ -25,13 +25,10 @@ public class DrinkControl : MonoBehaviour
     private float MotionBlurDrunkLevel = 4.0f;
     [SerializeField]
     private float VignetteDrunkLevel = 3.0f;
-    //public Camera mainCamera;
     private float drunkLevel;
-    //private SuperBlurBase sb;
     private float delayTimer;
     private bool hasTimerStarted;
     private bool increaseAlpha;
-    //private IllusionFade illusion;
     private void Start()
     {
         ppp = Camera.main.GetComponent<PostProcessingBehaviour>().profile;
@@ -40,10 +37,6 @@ public class DrinkControl : MonoBehaviour
         delayTimer = 0.0f;
         increaseAlpha = false;
         hasTimerStarted = false;
-        //sb = mainCamera.GetComponent<SuperBlurBase>();
-        //sb.interpolation = 0;
-        //sb.downsample = 0;
-      //  illusion = drinkingWall.GetComponent<IllusionFade>();
         illusionGlass1.GetComponent<MeshRenderer>().enabled = false;
         illusionGlass2.GetComponent<MeshRenderer>().enabled = false;
         illusionGlass3.GetComponent<MeshRenderer>().enabled = false;
@@ -115,15 +108,9 @@ public class DrinkControl : MonoBehaviour
                 other.gameObject.GetComponent<GlassControl>().FillLevel--;
                 //to do: Increase the drunk level here.
                 drunkLevel += 1.0f;
-                //sb.interpolation = 1;
-                //sb.downsample = 2;
-                //illusion.alpha = drunkLevel;
-                //sb.iterations = (int)drunkLevel;
                 delayTimer = 0.0f;
                 hasTimerStarted = true;
                 increaseAlpha = false;
-                //illusion.isFading = true;
-                //illusion.fadeOff = false;
                 //TO DO: Add the particle effect here!
                 greenParticle.Play();
 
